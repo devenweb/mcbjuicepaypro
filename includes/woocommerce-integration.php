@@ -1,10 +1,31 @@
 <?php
+/**
+ * WooCommerce Integration for MCB Juice QR Payment Gateway Pro.
+ *
+ * This file defines the WooCommerce payment gateway class for MCB Juice QR,
+ * handling payment processing, settings, and display on the checkout page.
+ *
+ * @package MCB_Juice_QR_Payment_Gateway_Pro
+ */
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
+/**
+ * MCB_Juice_QR_Payment_Gateway_Premium class.
+ *
+ * Implements the MCB Juice QR payment gateway for WooCommerce.
+ * This class handles the integration of the payment method, including its settings,
+ * payment processing logic, and display on the checkout and thank you pages.
+ */
 class MCB_Juice_QR_Payment_Gateway_Premium extends WC_Payment_Gateway {
+    /**
+     * Constructor for the gateway.
+     *
+     * Sets up the gateway properties, initializes form fields and settings,
+     * loads options, and hooks into WooCommerce actions.
+     */
     public function __construct() {
         $this->id                 = 'mcb_juice_qr_gateway_premium';
         $this->has_fields         = true;
@@ -143,7 +164,13 @@ class MCB_Juice_QR_Payment_Gateway_Premium extends WC_Payment_Gateway {
     }
 
     /**
-     * Process admin options with validation
+     * Processes the admin options for the gateway.
+     *
+     * This method is responsible for validating and saving the settings
+     * configured in the WooCommerce payment gateway settings page.
+     * It includes validation for API URL and API Key if API verification is enabled.
+     *
+     * @return bool True if options are processed successfully, false otherwise.
      */
     public function process_admin_options() {
         $api_verification = $this->get_option('api_verification');
@@ -159,7 +186,14 @@ class MCB_Juice_QR_Payment_Gateway_Premium extends WC_Payment_Gateway {
     }
 
     /**
-     * Process payment and handle verification
+     * Processes the payment for the given order.
+     *
+     * This method is called when a customer places an order using this payment gateway.
+     * It sets the order status to 'on-hold', reduces stock levels, and schedules
+     * an API verification event if enabled.
+     *
+     * @param int $order_id The ID of the order to process.
+     * @return array An array containing the result and redirect URL.
      */
     public function process_payment($order_id) {
         $order = wc_get_order($order_id);
@@ -177,7 +211,12 @@ class MCB_Juice_QR_Payment_Gateway_Premium extends WC_Payment_Gateway {
     }
 
     /**
-     * Display payment fields on checkout
+     * Displays the payment fields on the checkout page.
+     *
+     * This method outputs the description of the payment gateway and,
+     * if configured, displays a static QR code image or a message for dynamic QR code generation.
+     *
+     * @return void
      */
     public function payment_fields() {
         echo wpautop(wp_kses_post($this->description));

@@ -1,21 +1,23 @@
 <?php
-/*
-Plugin Name:       MCB Juice QR Payment Gateway Pro
-Plugin URI:        https://devenweb.com/product/mcb-juice-qr-payment-gateway-premium/
-Description:       A WooCommerce payment gateway for MCB Juice QR payments with proper checkout display.
-Version:           1.2.3
-Author:            Deven Pawaray
-Author URI:        https://devenweb.com
-Text Domain:       mcb-juice-qr-gateway
-Domain Path:       /languages 
-License:           GPLv2 or later
-License URI:       https://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 5.8
-Tested up to:      6.5
-Requires PHP:      7.4
-WC requires at least: 7.0
-WC tested up to:   8.9
-*/
+/**
+ * Plugin Name:       MCB Juice QR Payment Gateway Pro
+ * Plugin URI:        https://devenweb.com/product/mcb-juice-qr-payment-gateway-premium/
+ * Description:       A WooCommerce payment gateway for MCB Juice QR payments with proper checkout display.
+ * Version:           1.2.3
+ * Author:            Deven Pawaray
+ * Author URI:        https://devenweb.com
+ * Text Domain:       mcb-juice-qr-gateway
+ * Domain Path:       /languages
+ * License:           GPLv2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Requires at least: 5.8
+ * Tested up to:      6.5
+ * Requires PHP:      7.4
+ * WC requires at least: 7.0
+ * WC tested up to:   8.9
+ *
+ * @package MCB_Juice_QR_Payment_Gateway_Pro
+ */
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
@@ -26,6 +28,14 @@ if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get
     return;
 }
 
+/**
+ * Initializes the MCB Juice QR Payment Gateway.
+ *
+ * This function checks for WooCommerce availability, includes necessary function files,
+ * registers the payment gateway with WooCommerce, and sets up an action hook for payment verification.
+ *
+ * @return void
+ */
 function mcb_juice_qr_init_gateway() {
     // Check if WooCommerce classes are available.
     if (!class_exists('WC_Payment_Gateway')) {
@@ -45,6 +55,17 @@ function mcb_juice_qr_init_gateway() {
 
     // Add the verification action
     add_action('mcb_juice_qr_verify_payment', function ($order_id) {
+        /**
+         * Handles the payment verification for MCB Juice QR payments.
+         *
+         * This anonymous function is hooked to 'mcb_juice_qr_verify_payment' action.
+         * It retrieves order details, checks API settings, and performs an API call
+         * to verify the payment status. Based on the API response, it completes the payment
+         * or adds an order note with the error.
+         *
+         * @param int $order_id The ID of the WooCommerce order to verify.
+         * @return void
+         */
         $order = wc_get_order($order_id);
         if (!$order || $order->get_status() !== 'on-hold') {
             return;

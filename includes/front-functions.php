@@ -1,11 +1,25 @@
 <?php
+/**
+ * Front-end Functions for MCB Juice QR Payment Gateway Pro.
+ *
+ * This file contains functions related to the front-end display of the plugin,
+ * primarily for displaying the dynamic QR code on the thank you page.
+ *
+ * @package MCB_Juice_QR_Payment_Gateway_Pro
+ */
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
 /**
- * Display dynamic QR code on thank you page using CDN
+ * Displays a dynamic QR code on the WooCommerce thank you page.
+ *
+ * This function generates a QR code based on order details (amount, currency, order ID)
+ * and displays it to the user for payment. It uses an external QR code generation service.
+ *
+ * @param int $order_id The ID of the WooCommerce order.
+ * @return void
  */
 function mcb_juice_qr_display_dynamic_qr_code($order_id) {
     $gateway = new MCB_Juice_QR_Payment_Gateway_Premium();

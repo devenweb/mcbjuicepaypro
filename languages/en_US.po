@@ -1,0 +1,126 @@
+# English translations for MCB Juice QR Payment Gateway Premium
+msgid ""
+msgstr ""
+"Project-Id-Version: MCB Juice QR Payment Gateway Premium 1.2.3\n"
+"Report-Msgid-Bugs-To: https://devenweb.com/support\n"
+"POT-Creation-Date: 2025-07-26 10:00+0000\n"
+"PO-Revision-Date: 2025-07-26 10:00+0000\n"
+"Last-Translator: Deven Pawaray <deven@devenweb.com>\n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: includes/admin-functions.php:11
+msgid "Settings"
+msgstr "Settings"
+
+#: includes/woocommerce-integration.php:10
+msgid "MCB Juice QR Payment Premium"
+msgstr "MCB Juice QR Payment Premium"
+
+#: includes/woocommerce-integration.php:11
+msgid "Premium payment gateway for MCB Juice QR with advanced features using CDNs."
+msgstr "Premium payment gateway for MCB Juice QR with advanced features using CDNs."
+
+#: includes/woocommerce-integration.php:16
+msgid "Enable/Disable"
+msgstr "Enable/Disable"
+
+#: includes/woocommerce-integration.php:17
+msgid "Enable MCB Juice QR Payment Premium"
+msgstr "Enable MCB Juice QR Payment Premium"
+
+#: includes/woocommerce-integration.php:21
+msgid "Title"
+msgstr "Title"
+
+#: includes/woocommerce-integration.php:22
+msgid "MCB Juice QR Payment"
+msgstr "MCB Juice QR Payment"
+
+#: includes/woocommerce-integration.php:25
+msgid "Description"
+msgstr "Description"
+
+#: includes/woocommerce-integration.php:26
+msgid "Pay securely via MCB Juice QR."
+msgstr "Pay securely via MCB Juice QR."
+
+#: includes/woocommerce-integration.php:29
+msgid "QR Code Type"
+msgstr "QR Code Type"
+
+#: includes/woocommerce-integration.php:31
+msgid "Static"
+msgstr "Static"
+
+#: includes/woocommerce-integration.php:32
+msgid "Dynamic"
+msgstr "Dynamic"
+
+#: includes/woocommerce-integration.php:36
+msgid "Static QR Code Image URL"
+msgstr "Static QR Code Image URL"
+
+#: includes/woocommerce-integration.php:37
+msgid "Select a QR code image from the media library."
+msgstr "Select a QR code image from the media library."
+
+#: includes/woocommerce-integration.php:41
+msgid "Bank Logo URL"
+msgstr "Bank Logo URL"
+
+#: includes/woocommerce-integration.php:42
+msgid "Select a bank logo from the media library (recommended size: 50x50px)."
+msgstr "Select a bank logo from the media library (recommended size: 50x50px)."
+
+#: includes/woocommerce-integration.php:46
+msgid "Enable API Verification"
+msgstr "Enable API Verification"
+
+#: includes/woocommerce-integration.php:47
+msgid "Enable real-time payment verification via API."
+msgstr "Enable real-time payment verification via API."
+
+#: includes/woocommerce-integration.php:50
+msgid "API URL"
+msgstr "API URL"
+
+#: includes/woocommerce-integration.php:51
+msgid "Enter the API URL for automated verification."
+msgstr "Enter the API URL for automated verification."
+
+#: includes/woocommerce-integration.php:54
+msgid "API Key"
+msgstr "API Key"
+
+#: includes/woocommerce-integration.php:55
+msgid "Enter the API Key for automated verification."
+msgstr "Enter the API Key for automated verification."
+
+#: includes/woocommerce-integration.php:61
+msgid "API URL and API Key are required for API verification."
+msgstr "API URL and API Key are required for API verification."
+
+#: includes/woocommerce-integration.php:67
+msgid "Awaiting QR payment confirmation."
+msgstr "Awaiting QR payment confirmation."
+
+#: includes/woocommerce-integration.php:78
+msgid "Payment successfully verified via API."
+msgstr "Payment successfully verified via API."
+
+#: includes/woocommerce-integration.php:80
+msgid "API Verification Failed: %s (Status code: %d)"
+msgstr "API Verification Failed: %s (Status code: %d)"
+
+#: includes/front-functions.php:9
+msgid "Scan to Pay"
+msgstr "Scan to Pay"
+
+#: includes/front-functions.php:12
+msgid "Please place your order to generate a QR code."
+msgstr "Please place your order to generate a QR code."

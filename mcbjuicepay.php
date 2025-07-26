@@ -6,7 +6,7 @@ Description:       A WooCommerce payment gateway for MCB Juice QR payments with 
 Version:           1.2.3
 Author:            Deven Pawaray
 Author URI:        https://devenweb.com
-Text Domain:       mcbjuicepaylite
+Text Domain:       mcb-juice-qr-gateway
 Domain Path:       /languages 
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -100,4 +100,10 @@ function mcb_juice_qr_init_gateway() {
     });
 }
 
-add_action('plugins_loaded', 'mcb_juice_qr_init_gateway');
+"""add_action('before_woocommerce_init', function() {
+    if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+    }
+});
+
+add_action('plugins_loaded', 'mcb_juice_qr_init_gateway');""

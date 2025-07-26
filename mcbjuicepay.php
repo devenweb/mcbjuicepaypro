@@ -121,8 +121,10 @@ function mcb_juice_qr_init_gateway() {
     });
 }
 
-"""add_action('before_woocommerce_init', function() {
-    if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+"""add_action('plugins_loaded', 'mcb_juice_qr_init_gateway');
+
+add_action('before_woocommerce_init', function() {
+    if (class_exists('\Automattic\WooCommerce\Utilities\FeaturesUtil')) {
         \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
     }
 });

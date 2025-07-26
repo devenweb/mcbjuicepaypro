@@ -21,28 +21,29 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-// Check if WooCommerce is active
+// Check if WooCommerce is active.
 if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
     return;
 }
 
-// Include the functions and class files
-require_once plugin_dir_path(__FILE__) . 'includes/admin-functions.php';
-require_once plugin_dir_path(__FILE__) . 'includes/front-functions.php';
-require_once plugin_dir_path(__FILE__) . 'includes/woocommerce-integration.php';
-
-// Register the payment gateway
-add_filter('woocommerce_payment_gateways', function ($gateways) {
-    $gateways[] = 'MCB_Juice_QR_Payment_Gateway_Premium';
-    return $gateways;
-});
-
-// Load the gateway class
-add_action('plugins_loaded', function () {
+function mcb_juice_qr_init_gateway() {
+    // Check if WooCommerce classes are available.
     if (!class_exists('WC_Payment_Gateway')) {
-        return; // Exit if WooCommerce is not loaded
+        return;
     }
 
+    // Include the functions files
+    require_once plugin_dir_path(__FILE__) . 'includes/admin-functions.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/front-functions.php';
+
+    // Register the payment gateway
+    add_filter('woocommerce_payment_gateways', function ($gateways) {
+        require_once plugin_dir_path(__FILE__) . 'includes/woocommerce-integration.php';
+        $gateways[] = 'MCB_Juice_QR_Payment_Gateway_Premium';
+        return $gateways;
+    });
+
+    // Add the verification action
     add_action('mcb_juice_qr_verify_payment', function ($order_id) {
         $order = wc_get_order($order_id);
         if (!$order || $order->get_status() !== 'on-hold') {
@@ -97,4 +98,6 @@ add_action('plugins_loaded', function () {
             $order->add_order_note(sprintf(__('API Verification Failed: %s (Status code: %d)', 'mcb-juice-qr-gateway'), $error_message, $response_code));
         }
     });
-});
+}
+
+add_action('plugins_loaded', 'mcb_juice_qr_init_gateway');

@@ -110,7 +110,7 @@ class MCB_Juice_QR_Payment_Gateway_Premium extends WC_Payment_Gateway {
                 <?php _e('Select QR Code', 'mcb-juice-qr-gateway'); ?>
             </button>
             <?php if ($qr_code_url) : ?>
-                <p style="margin-top: 10px;">
+                <p class="qr-code-preview" style="margin-top: 10px;">
                     <img src="<?php echo $qr_code_url; ?>" style="max-width: 200px; display: block;">
                 </p>
             <?php endif; ?>
@@ -132,7 +132,7 @@ class MCB_Juice_QR_Payment_Gateway_Premium extends WC_Payment_Gateway {
                 <?php _e('Select Bank Logo', 'mcb-juice-qr-gateway'); ?>
             </button>
             <?php if ($bank_logo) : ?>
-                <p style="margin-top: 10px;">
+                <p class="bank-logo-preview" style="margin-top: 10px;">
                     <img src="<?php echo $bank_logo; ?>" style="max-width: 200px; display: block;">
                 </p>
             <?php endif; ?>

@@ -13,8 +13,8 @@ Boost your WooCommerce store with seamless MCB Juice QR payments. Designed for M
 - **For Merchants:** Tap into Mauritius’ MCB Juice market, streamline payments, and enhance trust.
 
 ### Requirements:
-- WordPress 6.0+
-- WooCommerce 8.0+
+- WordPress 6.5+
+- WooCommerce 8.9+ (HPOS Compatible)
 - PHP 7.4+
 
 ### License:

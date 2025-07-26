@@ -10,11 +10,13 @@
  * Domain Path:       /languages
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Requires at least: 5.8
+ * Requires at least: 6.5
  * Tested up to:      6.5
  * Requires PHP:      7.4
- * WC requires at least: 7.0
+ * WC requires at least: 8.9
  * WC tested up to:   8.9
+ * Stable tag:        1.2.3
+ * Tags:              woocommerce, payment gateway, mcb juice, qr payment, mauritius
  *
  * @package MCB_Juice_QR_Payment_Gateway_Pro
  */

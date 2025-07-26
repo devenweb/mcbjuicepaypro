@@ -116,6 +116,11 @@ class MCB_Juice_QR_Payment_Gateway_Premium extends WC_Payment_Gateway {
                 'description' => __('Enter the API Key for automated verification.', 'mcb-juice-qr-gateway'),
                 'default'     => '',
             ],
+            '_wpnonce' => [
+                'type' => 'hidden',
+                'default' => wp_create_nonce('woocommerce_mcb_juice_qr_gateway_premium_settings'),
+                'custom_attributes' => ['name' => 'woocommerce_mcb_juice_qr_gateway_premium_nonce'],
+            ],
         ];
     }
 
@@ -173,10 +178,15 @@ class MCB_Juice_QR_Payment_Gateway_Premium extends WC_Payment_Gateway {
      * @return bool True if options are processed successfully, false otherwise.
      */
     public function process_admin_options() {
+        // Add nonce check for security
+        if (!isset($_POST['woocommerce_mcb_juice_qr_gateway_premium_nonce']) || !wp_verify_nonce($_POST['woocommerce_mcb_juice_qr_gateway_premium_nonce'], 'woocommerce_mcb_juice_qr_gateway_premium_settings')) {
+            return false;
+        }
+
         $api_verification = $this->get_option('api_verification');
         if ($api_verification === 'yes') {
-            $api_url = $_POST['woocommerce_mcb_juice_qr_gateway_premium_api_url'] ?? '';
-            $api_key = $_POST['woocommerce_mcb_juice_qr_gateway_premium_api_key'] ?? '';
+            $api_url = isset($_POST['woocommerce_mcb_juice_qr_gateway_premium_api_url']) ? esc_url_raw(wp_unslash($_POST['woocommerce_mcb_juice_qr_gateway_premium_api_url'])) : '';
+            $api_key = isset($_POST['woocommerce_mcb_juice_qr_gateway_premium_api_key']) ? sanitize_text_field(wp_unslash($_POST['woocommerce_mcb_juice_qr_gateway_premium_api_key'])) : '';
             if (empty($api_url) || empty($api_key)) {
                 WC_Admin_Settings::add_error(__('API URL and API Key are required for API verification.', 'mcb-juice-qr-gateway'));
                 return false;

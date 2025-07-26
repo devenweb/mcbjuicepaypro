@@ -17,8 +17,8 @@ Price: MUR 2,500 (Special: MUR 2,000 for a limited time).
 Get it now at: https://devenweb.com/product/mcb-juice-qr-payment-gateway-premium/
 
 Requirements:
-- WordPress 6.0+
-- WooCommerce 8.0+
+- WordPress 6.5+
+- WooCommerce 8.9+ (HPOS Compatible)
 - PHP 7.4+
 
 License: GPLv2 or later. One-time payment, instant download, lifetime updates.
